@@ -1,0 +1,11 @@
+<use name="DataFormats/Common"/>
+<use name="DataFormats/HLTReco"/>
+<use name="DataFormats/NanoAOD"/>
+<use name="FWCore/Common"/>
+<use name="FWCore/Framework"/>
+<use name="FWCore/MessageLogger"/>
+<use name="FWCore/ParameterSet"/>
+<use name="FWCore/Utilities"/>
+<library file="*.cc" name="HLTriggerHLTnanoAOD_plugins">
+  <flags EDM_PLUGIN="1"/>
+</library>
