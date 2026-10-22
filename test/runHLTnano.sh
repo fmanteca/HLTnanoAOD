@@ -6,8 +6,7 @@
 #
 # Defaults: -n 10, a RelVal TTbar PU sample, file:hltnano.root
 #
-# The cmsDriver flag --mc is MANDATORY here (physics runs on MC input);
-# omitting it is the usual reason the configuration step fails.
+# The --mc flag is mandatory: the input is an MC sample.
 
 NEV=${1:-10}
 INPUT=${2:-/store/relval/CMSSW_20_0_0/RelValTTbar_14TeV/GEN-SIM-DIGI-RAW/PU_150X_mcRun4_realistic_v1_STD_D127_RegeneratedGS_PU_16Aug26-v2/2590000/00f3dc39-4e7d-4438-863b-565ffb3094f0.root}

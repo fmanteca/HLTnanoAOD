@@ -81,22 +81,9 @@ cmsDriver.py step2 --mc \
 ```
 
 Drop `--python_filename` to run directly; keep it + `cmsRun hltnano_cfg.py`
-to rerun the identical job.
-
-### Common pitfalls (what broke naive `FEVTDEBUGHLT` attempts)
-
-1. **`--mc` is required** — MC input; without it cmsDriver builds a data
-   config that fails at conditions/MC customisation time.
-2. `--eventcontent FEVTDEBUGHLT` + `--datatier GEN-SIM-DIGI-RAW` writes an
-   EDM ROOT file; for nanoAOD use `--eventcontent NANOAODSIM
-   --datatier NANOAODSIM`, which makes cmsDriver create the
-   `NanoAODOutputModule` itself.
-3. The nano producers must be appended to the schedule **before the output
-   end-path** — done by the customise hook
-   `HLTrigger/HLTnanoAOD/hltPhase2TriggerNano_cff.customiseHLTnano` (append it
-   to `--customise` as shown).
-4. The ageing / HcalTpDigi `--customise_commands` above are unchanged from
-   the reference reach study command.
+to rerun the identical job. Note that `--mc` is mandatory here (the input is
+MC), and `--eventcontent NANOAODSIM` is what makes cmsDriver create a
+`NanoAODOutputModule` (nanoAOD flat file) instead of an EDM ROOT output.
 
 ## How it works
 
