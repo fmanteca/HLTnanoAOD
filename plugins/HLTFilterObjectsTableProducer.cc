@@ -24,6 +24,8 @@
 #include "DataFormats/HLTReco/interface/TriggerObject.h"
 #include "DataFormats/NanoAOD/interface/FlatTable.h"
 
+#include <algorithm>
+#include <numeric>
 #include <string>
 #include <vector>
 
@@ -94,8 +96,15 @@ void HLTFilterObjectsTableProducer::produce(edm::Event& event, const edm::EventS
     phi.reserve(keys.size());
     mass.reserve(keys.size());
     id.reserve(keys.size());
-    for (const auto key : keys) {
-      const auto& obj = triggerObjects[key];
+    // row order follows the TriggerEvent insertion order; sort by pT (descending)
+    // so downstream users can safely cut on array position (e.g. leading object)
+    std::vector<trigger::size_type> order(keys.size());
+    std::iota(order.begin(), order.end(), trigger::size_type(0));
+    std::sort(order.begin(), order.end(), [&](const trigger::size_type a, const trigger::size_type b) {
+      return triggerObjects[keys[a]].pt() > triggerObjects[keys[b]].pt();
+    });
+    for (const auto i : order) {
+      const auto& obj = triggerObjects[keys[i]];
       pt.push_back(obj.pt());
       eta.push_back(obj.eta());
       phi.push_back(obj.phi());

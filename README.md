@@ -15,7 +15,7 @@ Developed/validated in `CMSSW_20_1_0_pre4` (el9_amd64_gcc14) on
 |---|---|---|
 | `L1_<algoName>_final` | `l1tP2GTTrigConvert` + `hltNanoL1BitsTable` | one `bool` per Phase-2 L1 (P2GT) algorithm, final post-prescale decision; algo names from the loaded GT menu (`step1_2024`), incl. its `<algo>_pHLT2` duplicates |
 | `HLT_<pathName>` | `hltNanoHLTBitsTable` | one `bool` per path of the process: HLT menu paths (`_pHLT`/`_pHLT2` variants included), plus step/L1-emulator paths (`HLT_L1TrackTrigger_step`, `HLT_pDoubleEGEle37_24`, ...) |
-| `n<filter>`, `<filter>_pt/eta/phi/mass/id` | `hltNanoFilterObjectsTable` | kinematics of the trigger objects passing each configured HLT filter |
+| `n<filter>`, `<filter>_pt/eta/phi/mass/id` | `hltNanoFilterObjectsTable` | kinematics of the trigger objects passing each configured HLT filter; rows sorted by descending pT |
 
 Naming follows the standard nanoAOD `TableName_column` convention; the bit
 tables are singleton tables (`L1_...`/`HLT_...` branches are scalars), the
