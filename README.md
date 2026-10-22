@@ -21,17 +21,6 @@ Naming follows the standard nanoAOD `TableName_column` convention; the bit
 tables are singleton tables (`L1_...`/`HLT_...` branches are scalars), the
 object tables are per-event collections (`n<Filter>` counters).
 
-Verified end-to-end on 30 RelVal TTbar+PU events (menu `@relvalRun4`):
-
-* 80 `L1_` trigger-bit branches (60 with at least one event passing),
-* 149 `HLT_` path-bit branches (106 ever passed), e.g.
-  `HLT_Ele32_WPTight_L1Seeded` (5 events), `HLT_IsoMu24_FromL1TkMuon` (3),
-  `HLT_AK4PFPuppiJet520` (1), `HLT_LooseDeepTauPFTauHPS150_L1NN_eta2p1` (1);
-* object tables non-empty exactly where the matching path fires: muon L3 filter
-  3 events (pT 82.9/55.9/66.8 GeV), Ele32 5, `HT1070` 13, HPS tau 1 (pT
-  216.7), AK4PFPuppiJet520 1 (pT 529.3), Photon187 0 (path never fires in 30
-  events — expected).
-
 ## Setup from scratch
 
 ```bash
